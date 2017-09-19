@@ -21,10 +21,11 @@ class Outer {
 		// staic should be in static class but static class can have non static
 		// method
 		// }
-		private int i = 10;
+		//private int i = 10;
 		
 		void m1(){
-			System.out.println("Inner m1()");
+			Inner i = new Inner();
+			System.out.println("Inner m1() " + i.i);
 		}
 
 	}
@@ -45,3 +46,4 @@ public class TestInnerAccessing {
 		outer.m1();
 	}
 }
+
