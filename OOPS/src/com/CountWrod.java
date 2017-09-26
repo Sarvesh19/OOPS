@@ -1,10 +1,12 @@
 package com.snippet;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 public class CountWrod {
@@ -54,6 +56,28 @@ public class CountWrod {
 		}
 
 	}
+	
+	private static void countWordByMap(){
+		String str = "I am a Boy I am a";
+		String[] splitStr = str.split(" ");
+
+		Map<String, Integer> wordCount = new HashMap<>();
+		for (String word: splitStr) {
+		    if (wordCount.containsKey(word)) {
+		        // Map already contains the word key. Just increment it's count by 1
+		        wordCount.put(word, wordCount.get(word) + 1);
+		    } else {
+		        // Map doesn't have mapping for word. Add one with count = 1
+		        wordCount.put(word, 1);
+		    }
+		}
+	//	And then simply iterate over the map, and print the key: value pair:
+
+		for (Entry<String, Integer> entry: wordCount.entrySet()) {
+		    System.out.println("Count of : " + entry.getKey() + 
+		                       " in sentence = " + entry.getValue());
+		}
+	}
 
 	public static void main(String[] args) {
 
@@ -71,6 +95,8 @@ public class CountWrod {
 		countWord(l, true);
 		countWord(l, false);
 		sc.close();
+		
+		countWordByMap();
 
 	}
 }
