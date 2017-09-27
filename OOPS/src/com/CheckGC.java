@@ -1,6 +1,11 @@
+package com.snippet;
+
+import java.util.Date;
+
 public class CheckGC {
 	public static void main(String[] args) {
 		Runtime rt = Runtime.getRuntime();
+		Runtime rt1 = Runtime.getRuntime();
 		System.out.println("total JVM memory :" + rt.totalMemory());
 		Date d = null;
 		for (int i = 0; i < 10000; i++) {
