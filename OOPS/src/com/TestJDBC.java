@@ -29,19 +29,18 @@ public class TestJDBC {
 			PreparedStatement prep = con.prepareStatement(updateTableSQL);
 			prep.setString(1, "Mumbai");
 			prep.setInt(2, 2);
-			
+
 			// stored procedure
-			
-			CallableStatement stmt1=con.prepareCall("{call insertRO(?,?)}");  
-			stmt1.setInt(1,1011);  
-			stmt1.setString(2,"Amit");  
+
+			CallableStatement stmt1 = con.prepareCall("{call insertRO(?,?)}");
+			stmt1.setInt(1, 1011);
+			stmt1.setString(2, "Amit");
 			stmt1.executeUpdate();
-			//stmt1.execute();  
-			  
-			System.out.println("success");  
-			
+			// stmt1.execute();
+
+			System.out.println("success");
+
 			// end stored proc
-			
 
 			prep.executeUpdate();
 
@@ -50,6 +49,12 @@ public class TestJDBC {
 			while (rs.next())
 				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  "
 						+ rs.getString(3) + " " + rs.getString(4));
+
+			ResultSet rs1 = stmt.executeQuery("select * from user420");
+
+			while (rs1.next())
+				System.out.println(rs1.getInt(1) + "  " + rs1.getString(2));
+
 			con.close();
 		} catch (Exception e) {
 			System.out.println(e);
