@@ -1,0 +1,29 @@
+create  procedure INSERTRO  
+( IN id  INT(11),  
+ IN name VARCHAR(50))   
+begin  
+insert into user420 (id,name) values (id,name);
+end
+
+mysql> delimiter //
+
+mysql> create  procedure INSERTRO  
+( IN id  INT(11),  
+ IN name VARCHAR(50))   
+begin  
+insert into user420 (id,name) values (id,name);
+end
+//
+
+
+mysql> delimiter //
+
+mysql> CREATE PROCEDURE dorepeat(p1 INT)
+    -> BEGIN
+    ->   SET @x = 0;
+    ->   REPEAT SET @x = @x + 1; UNTIL @x > p1 END REPEAT;
+    -> END
+    -> //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter ;
