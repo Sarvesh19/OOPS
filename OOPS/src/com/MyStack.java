@@ -38,6 +38,21 @@ public class MyStack {
 		public Stack(int size) {
 			array = new Object[size];
 		}
+		
+		public Object remove(int index) {
+
+			if (index >= size)
+				throw new ArrayIndexOutOfBoundsException(index);
+			Object oldValue = array[index];
+
+			int numMoved = size - index - 1;
+			if (numMoved > 0)
+				System.arraycopy(array, index + 1, array, index, numMoved);
+			array[--size] = null; // Let gc do its work
+
+			return oldValue;
+
+		}
 
 		public boolean pop() {
 			if (size >= 0) {
