@@ -38,25 +38,10 @@ public class MyStack {
 		public Stack(int size) {
 			array = new Object[size];
 		}
-		
-		public Object remove(int index) {
-
-			if (index >= size)
-				throw new ArrayIndexOutOfBoundsException(index);
-			Object oldValue = array[index];
-
-			int numMoved = size - index - 1;
-			if (numMoved > 0)
-				System.arraycopy(array, index + 1, array, index, numMoved);
-			array[--size] = null; // Let gc do its work
-
-			return oldValue;
-
-		}
 
 		public boolean pop() {
 			if (size >= 0) {
-				array[size] = null;
+				array[size-1] = null;
 				size--;
 				return true;
 			} else {
@@ -94,6 +79,26 @@ public class MyStack {
 			return -1;
 		}
 
+		public Object remove(int index) {
+
+			if (index >= size)
+				throw new ArrayIndexOutOfBoundsException(index);
+			Object oldValue = array[index];
+
+			int numMoved = size - index - 1;
+			if (numMoved > 0)
+				System.arraycopy(array, index + 1, array, index, numMoved);
+			array[--size] = null; // Let gc do its work
+
+			return oldValue;
+
+		}
+
+		public boolean remove(Object o) {
+			return false;
+
+		}
+
 		@Override
 		public String toString() {
 			return "Stack [array=" + Arrays.toString(array) + ", index="
@@ -117,20 +122,22 @@ public class MyStack {
 		stack.push(15488);
 		stack.push(154444);
 		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
-//		stack.pop();
+		stack.remove(2);
+		stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.pop();
+		// stack.
 
 		for (int i = 0; i < stack.size(); i++) {
 			System.out.println(stack.getStack()[i]);
@@ -141,10 +148,13 @@ public class MyStack {
 		System.out.println(stack.contains(25));
 		System.out.println(stack.contains(154444));
 		System.out.println(stack.contains(15488));
+		java.util.Stack s = new java.util.Stack();
+		// System.out.println(s.remove(0));
+		;
 
 		// System.out.println(stack);
-//		List<Object> list = new ArrayList<>(10);
-//		list.add(5411);
-//		System.out.println(list.contains(154444));
+		// List<Object> list = new ArrayList<>(10);
+		// list.add(5411);
+		// System.out.println(list.contains(154444));
 	}
 }
